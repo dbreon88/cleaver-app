@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import { AuthProvider } from '@/components/AuthProvider'
 
 export const metadata: Metadata = {
   title: 'CLEAVER',
@@ -16,9 +17,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark">
       <body>
-        <div className="mx-auto max-w-[480px] min-h-screen">
-          {children}
-        </div>
+        <AuthProvider>
+          <div className="mx-auto max-w-[480px] min-h-screen">
+            {children}
+          </div>
+        </AuthProvider>
       </body>
     </html>
   )

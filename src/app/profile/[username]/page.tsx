@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { createClient } from '@/lib/supabase-server'
 import { UserAvatar } from '@/components/UserAvatar'
 import { PostGrid } from '@/components/PostGrid'
@@ -33,7 +35,8 @@ export default async function ProfilePage({ params }: { params: { username: stri
   let savedPosts: Post[] = []
   if (isOwnProfile) {
     const { data: saves } = await supabase.from('saves').select('post_id, posts(*)').eq('user_id', profile.id).order('created_at', { ascending: false })
-    savedPosts = (saves || []).map((s: any) => s.posts).filter(Boolean)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    savedPosts = (saves || []).map((s: any) => s.posts as Post | null).filter(Boolean) as Post[]
   }
 
   return (

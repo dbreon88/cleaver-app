@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { createClient } from '@/lib/supabase-server'
 import { PostCard } from '@/components/PostCard'
 import { CommentList } from '@/components/CommentList'

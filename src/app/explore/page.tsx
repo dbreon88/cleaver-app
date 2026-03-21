@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { createClient } from '@/lib/supabase-server'
 import { PostGrid } from '@/components/PostGrid'
 import { ExploreSearch } from './ExploreSearch'
